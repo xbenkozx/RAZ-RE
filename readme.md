@@ -3,14 +3,14 @@ Reverse-enginering for RAZ/KRAZE disposible vapes. These devices use a Nation N3
 
 ## Hardware
 These vapes use the following hardware:
-- Nations Tech [N32G01K8Q7-1](https://www.nationstech.com/uploadfile/file/20220907/1662539811646982.pdf) microcontroller, featuring a 48MHz Arm Cortex-M0 core, 64k of internal Flash memory, 8k of SRAM
+- Nations Tech [N32G031K8Q7-1](https://www.nationstech.com/uploadfile/file/20220907/1662539811646982.pdf) microcontroller, featuring a 48MHz Arm Cortex-M0 core, 64k of internal Flash memory, 8k of SRAM
 - Giantech Semiconductor [GT25Q80A](https://uploadcdn.oneyac.com/upload/document/1676268194927_6539.pdf) 8Mbit (1Mbyte) SPI NOR Flash
 - LowPowerSemi [LP4068](https://pdf1.alldatasheet.com/datasheet-pdf/download/1244042/POWER/LP4068.html) linear Li-ion battery charger, configured for ~550mA charge current
 - LowPowerSemi LDO voltage regulator, labeled "LPS 2NDJ1" but exact model is unknown
 - Generic 5-pin SOT-23 vape controller, labeled "AjCH" with electret-type microphone sensing element
 - 0.96-inch 80x160 IPS TFT display
 
-## Nation N32G0 Cortex M0 Microcontroller
+## Nation N32G031 Cortex M0 Microcontroller
 There are varations in boards. Please refer to <i>[Firmware Readme](/Firmware/readme.md)</i> for more information on board versions and firmware. 
 
 <span style="color:red;"><b>NOTE: USING INCORRECT FIRMWARE CAN RESULT IN DAMAGE TO DEVICE AND/OR FIRE HAZARDS.</b></span>
@@ -158,3 +158,6 @@ All images are stored on the external Flash as raw RGB565 16-bit bitmaps (i.e. e
 
   ### Firmware Version Bitmap
   Inside the firmware Flash dump, at addresses 0x7066-0x7E75, appears to be a bitmap version of the aforementioned version number. It appears to be only 60x30 pixels in size, but there are 0x00 padding bytes around this bitmap that do not align to 120-byte boundaries (60 pixels), making determining the "true" image size difficult without decompiling the firmware and finding the function that triggers the version screen.
+
+## Keil MDK / C Library Examples
+Nation Tech has a library for Keil MDK IDE. This library is included in the N32G031xx_V2.2.0.zip file. This file also includes examples for different functions of the core.
