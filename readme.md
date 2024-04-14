@@ -1,5 +1,5 @@
 # RAZ/KRAZE Disposable Vape RE
-Reverse-enginering for RAZ/KRAZE disposible vapes. These devices use a Nation N32G0 Cortex M0 ARM microcontroller, ST7735 80x160 TFT display and 8Mb flash storage.
+Reverse-enginering for RAZ/KRAZE disposible vapes. These devices use a Nation N32G0 Cortex M0 ARM microcontroller, ST7735 80x160 TFT display and 8Mb flash storage. Thanks to ginbot86 for creating the Flash Memory Map and Display output tables. Please check out his repo for some additional information on this vape [https://github.com/ginbot86/ColorLCDVape-RE](https://github.com/ginbot86/ColorLCDVape-RE).
 
 ## Hardware
 These vapes use the following hardware:
