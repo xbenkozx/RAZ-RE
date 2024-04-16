@@ -4,7 +4,47 @@ There are 3 different board versions with the following board identifiers:
 - XD0007_MB_V0.6G1
 - YK656-XD0007-A-V1.8
 
-Research is ongoing for decompiling the program image binary.
+## XD0007_MB_V0.6G1
+
+<table>
+    <tr>
+        <td>
+            <img src="images/XD0007_MB_V0.6G1_logic_front.jpg" alt="drawing" width="300"/>
+            <br/>
+            Logic Top
+        </td>
+        <td>
+            <img src="images/XD0007_MB_V0.6G1_logic_back.jpg" alt="drawing" width="300"/>
+            <br/>
+            Logic Bottom
+        </td>
+    </tr>
+</table>
+
+## YK656-XD0007-A-V1.8
+
+<table>
+    <tr>
+        <td>
+            <img src="images/YK656-XD0007-A-V1.8_logic_front.jpg" alt="drawing" width="300"/>
+            <br/>
+            Logic Top
+        </td>
+        <td>
+            <img src="images/YK656-XD0007-A-V1.8_logic_back.jpg" alt="drawing" width="300"/>
+            <br/>
+            Logic Bottom
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="images/YK656-XD0007-A-V1.8_batt_front.jpg" alt="drawing" width="300"/>
+            <br/>
+            Battery
+        </td>
+        <td></td>
+    </tr>
+</table>
 
 ## Firmware Versions
 Board versions XD0007_MB_V0.6B and XD0007_MB_V0.6G1 use similar FW and can be interchanged. All pinouts other than UART RX/TX are the same. Version YK656-XD0007-A-V1.8 uses a different pinout and cannot be used with the other FW versions.
@@ -143,7 +183,7 @@ Make sure write protection is disabled. If it is not, refer above to disable wri
 To upload an binary image to the program memory do the following:
 
 <br/>
-Enable Programming Mode:
+Enable Programming Mode by setting the FLASH_CTRL.PG to '1':
 
 >write_memory 0x40022010 32 0x210;
 
@@ -158,6 +198,20 @@ Reset the device to run the program.
 Or halt the program on reset:
 
 >reset halt
+
+#### Example for erasing memory and uploading binary image
+> reset halt;<br/>
+> write_memory 0x40022004 32 0x45670123;<br/>
+> write_memory 0x40022004 32 0xCDEF89AB;<br/>
+> mdw 0x40022010 1;<br/>
+> write_memory 0x40022010 32 0x4;<br/>
+> write_memory 0x40022010 32 0x44;<br/>
+> reset halt;<br/>
+> write_memory 0x40022004 32 0x45670123;<br/>
+> write_memory 0x40022004 32 0xCDEF89AB;<br/>
+> write_memory 0x40022010 32 0x1;<br/>
+> load_image RAZ.bin 0x0;<br/>
+> verify_image RAZ.bin 0x0;
 
 
 

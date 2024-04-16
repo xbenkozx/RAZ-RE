@@ -14,7 +14,7 @@
 <br/>
 
 # Flash Register Map
-![alt text](reg_map.png)
+![register map](/images/reg_map.png)
 
 <br/>
 
