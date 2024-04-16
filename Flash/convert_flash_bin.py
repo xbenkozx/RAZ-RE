@@ -156,6 +156,11 @@ if __name__ == "__main__":
 
     if bin_file_path != None and bin_file_path != "" and os.path.exists(bin_file_path):
         with open(bin_file_path, 'rb') as f:
+            # img = mem_map[0]
+            # im = loadImage(f, img[1], img[2])
+            # im.save('images/' + img[0] + '.jpg')
+
+
             if not args.config:
                 for img in mem_map:
                     im = loadImage(f, img[1], img[2])
