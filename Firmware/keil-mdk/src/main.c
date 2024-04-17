@@ -9,13 +9,20 @@
 #define LED_GPIO GPIOA
 
 #define BUFFER_SIZE 4096
+int status = 0;
 int page[1];
-int write_flag[1];
+volatile int lvl_reset_flag[1];
+volatile int continue_flag[1];
+volatile int write_flag[1];
+uint8_t lvl_buffer[5];
+uint8_t lvl_buffer_read[5];
 uint8_t buffer[BUFFER_SIZE];
 __IO uint32_t FlashID = 0;
 
 int main(void)
 {
+	page[0] = -1;
+	write_flag[0] = 0;
 	/* LED Setup */
 	GPIO_Init(LED_GPIO, LED_PIN, GPIO_MODE_OUTPUT_PP);
 	Delay(100);
@@ -23,15 +30,37 @@ int main(void)
 	
 	sFLASH_Init();
 	
+	//continue_flag[0] = 1;
+	//lvl_reset_flag[0] = 1;
+	//lvl_buffer[0] = 0xdd;
+	//lvl_buffer[1] = 0xdd;
+	
 	while(1){
+		Delay(100);
 		FlashID = sFLASH_ReadID();
 		if(FlashID != 0) break;
 	}
 	
 	if(FlashID == sFLASH_GD25Q80_ID){
+		status = 1;
+		while(continue_flag[0] == 0)
+			;
+		status = 2;
+		continue_flag[0] = 0;
+		
+		if(lvl_reset_flag[0] == 1){
+			lvl_buffer[4] = 0xBB;
+			sFLASH_EraseSector(0xf8000);
+			sFLASH_WriteBuffer(lvl_buffer, 0xf8000, 5);
+			status = 3;
+		}
+		
+		sFLASH_ReadBuffer(lvl_buffer_read, 0xf8000, 5);
+		
 		volatile int tmp_page = -1;
 		while(1){
 			if(tmp_page != page[0]){
+				status = 4;
 				GPIO_On(LED_GPIO, LED_PIN);
 				tmp_page = page[0];
 				uint32_t addr = page[0] * BUFFER_SIZE;
@@ -40,6 +69,17 @@ int main(void)
 			}
 		}
 	}else{
+		GPIO_On(LED_GPIO, LED_PIN);
+		Delay(1000);
+		GPIO_Off(LED_GPIO, LED_PIN);
+		Delay(1000);
+		GPIO_On(LED_GPIO, LED_PIN);
+		Delay(1000);
+		GPIO_Off(LED_GPIO, LED_PIN);
+		Delay(1000);
+		GPIO_On(LED_GPIO, LED_PIN);
+		Delay(1000);
+		GPIO_Off(LED_GPIO, LED_PIN);
 		while(1)
 			;
 	}
