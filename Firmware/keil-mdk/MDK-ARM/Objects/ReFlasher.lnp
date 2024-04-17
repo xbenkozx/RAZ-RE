@@ -1,0 +1,13 @@
+--cpu Cortex-M0
+".\objects\startup_n32g031.o"
+".\objects\system_n32g031.o"
+".\objects\n32g031_gpio.o"
+".\objects\n32g031_spi.o"
+".\objects\n32g031_rcc.o"
+".\objects\main.o"
+".\objects\n32g031_it.o"
+".\objects\spi_flash.o"
+--library_type=microlib --strict --scatter ".\Objects\ReFlasher.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\ReFlasher.map" -o .\Objects\ReFlasher.axf
