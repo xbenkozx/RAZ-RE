@@ -1,0 +1,2 @@
+Vape Activation Time: 18119590.4s (1811959040)
+In-Use Flag: 0x31

@@ -172,12 +172,12 @@ if __name__ == "__main__":
             f.seek(vape_in_use_flag_addr)
             vape_in_use_flag = int.from_bytes(f.read(1), byteorder='big')
 
-            print(f'Vape Activation Time: {str(vape_activation_time / 1000)}s ({str(vape_activation_time)})')
+            print(f'Vape Activation Time: {str(vape_activation_time / 100)}s ({str(vape_activation_time)})')
             print(f'In-Use Flag: {hex(vape_in_use_flag)}')
 
             # write vape in use flag and vape time to file
             with open('vape_config.txt', 'w') as cf:
-                cf.write(f'Vape Activation Time: {str(vape_activation_time / 1000)}s ({str(vape_activation_time)})\n')
+                cf.write(f'Vape Activation Time: {str(vape_activation_time / 100)}s ({str(vape_activation_time)})\n')
                 cf.write(f'In-Use Flag: {hex(vape_in_use_flag)}')
 
 
