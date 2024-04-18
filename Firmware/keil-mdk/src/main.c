@@ -9,15 +9,16 @@
 #define LED_GPIO GPIOA
 
 #define BUFFER_SIZE 4096
-int status = 0;
 int page[1];
 volatile int lvl_reset_flag[1];
 volatile int continue_flag[1];
 volatile int write_flag[1];
+volatile int status[1];
 uint8_t lvl_buffer[5];
 uint8_t lvl_buffer_read[5];
 uint8_t buffer[BUFFER_SIZE];
 __IO uint32_t FlashID = 0;
+uint32_t pointer;
 
 int main(void)
 {
@@ -31,9 +32,7 @@ int main(void)
 	sFLASH_Init();
 	
 	//continue_flag[0] = 1;
-	//lvl_reset_flag[0] = 1;
-	//lvl_buffer[0] = 0xdd;
-	//lvl_buffer[1] = 0xdd;
+	//write_flag[0] = 1;
 	
 	while(1){
 		Delay(100);
@@ -42,30 +41,61 @@ int main(void)
 	}
 	
 	if(FlashID == sFLASH_GD25Q80_ID){
-		status = 1;
+		status[0] = 1;
 		while(continue_flag[0] == 0)
 			;
-		status = 2;
+		
+		//if(write_flag[0] == 1){
+		for(int i=0; i<BUFFER_SIZE; i++){
+			//buffer[i] = 0xde;
+		//}
+		}
+		status[0] = 2;
 		continue_flag[0] = 0;
 		
 		if(lvl_reset_flag[0] == 1){
 			lvl_buffer[4] = 0xBB;
 			sFLASH_EraseSector(0xf8000);
 			sFLASH_WriteBuffer(lvl_buffer, 0xf8000, 5);
-			status = 3;
+			status[0] = 3;
 		}
 		
 		sFLASH_ReadBuffer(lvl_buffer_read, 0xf8000, 5);
 		
 		volatile int tmp_page = -1;
-		while(1){
-			if(tmp_page != page[0]){
-				status = 4;
-				GPIO_On(LED_GPIO, LED_PIN);
-				tmp_page = page[0];
-				uint32_t addr = page[0] * BUFFER_SIZE;
-				sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
-				GPIO_Off(LED_GPIO, LED_PIN);
+		
+		if(write_flag[0] == 1){
+			sFLASH_EraseBulk();
+			Delay(1000);
+			while(1){
+				if(tmp_page != page[0]){
+					status[0] = 4;
+					GPIO_On(LED_GPIO, LED_PIN);
+					tmp_page = page[0];
+					uint32_t addr = page[0] * BUFFER_SIZE;
+					for(int i=0; i<1; i++){
+						int offset = (i * 256);
+						uint32_t sector_addr = addr + offset;
+						//pointer = sector_addr;
+						//Delay(1000);
+						sFLASH_WriteBuffer(buffer, sector_addr, 256);
+					}
+					sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
+					status[0] = 5;
+					GPIO_Off(LED_GPIO, LED_PIN);
+				}
+			}
+		}else{
+			while(1){
+				if(tmp_page != page[0]){
+					status[0] = 6;
+					GPIO_On(LED_GPIO, LED_PIN);
+					tmp_page = page[0];
+					uint32_t addr = page[0] * BUFFER_SIZE;
+					sFLASH_ReadBuffer(buffer, addr, 256);
+					GPIO_Off(LED_GPIO, LED_PIN);
+					status[0] = 7;
+				}
 			}
 		}
 	}else{

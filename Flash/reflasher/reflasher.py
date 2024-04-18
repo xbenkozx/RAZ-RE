@@ -8,7 +8,7 @@ DATA_BUFFER_ADDR        = 0x20000004
 PAGE_SET_ADDR           = 0x20001018
 LEVEL_BUFFER_ADDR       = 0x20001008
 LEVEL_READ_BUFFER_ADDR  = 0x2000100D
-FW_VERSION_ADDR         = 0x0
+STATUS_REG_ADDR         = 0x2000101C
 WRITE_FLAG_ADDR         = 0x20001020
 LVL_RESET_FLAG_ADDR     = 0x20001014
 CONTINUE_FLAG_ADDR      = 0x20001004
@@ -40,12 +40,14 @@ FLASH_BLOCK_SIZE        = 4096
 FLASH_START_ADDR        = 0x0
 
 # -------------------------------------
-# SPI FLASH DATA MAP
+# SPI FLASH MISC DATA MAP
 # -------------------------------------
-ACTIVATION_TIME_ADDR    = 0xF800
+ACTIVATION_TIME_ADDR    = 0xF800 #LENGTH 4
 IN_USE_FLAG_ADDR        = 0xF804
 
-
+# -------------------------------------
+# SPI FLASH IMAGE DATA MAP
+# -------------------------------------
 mem_map = [
     ['BG_1',            (80, 160),  0x0],
     ['BATT_0',          (72,72),    0x6400],
@@ -185,8 +187,8 @@ class ReFlasher:
             pass
     def dump_fw(self, file_path):
         print("Extracting FW: ", end='', flush=True)
-        data1 = bytes(self.dev.read_mem(PROGMEM_ADDR, PROGMEM_LEN))
-        data2 = bytes(self.dev.read_mem(PROGMEM_ADDR, PROGMEM_LEN))
+        data1 = bytes(self.dev.read_mem(MCU_PROGMEM_ADDR, MCU_PROGMEM_LEN))
+        data2 = bytes(self.dev.read_mem(MCU_PROGMEM_ADDR, MCU_PROGMEM_LEN))
 
         if data1 == data2:
             print("Success")
@@ -200,46 +202,85 @@ class ReFlasher:
         if self.erase_prog_mem():
             print("Uploading FW: " + file_path)
             self.reset_halt()
-            self.dev.set_mem32(FLASH_KEY_REG, FLASH_KEY_1) # KEY1
-            self.dev.set_mem32(FLASH_KEY_REG, FLASH_KEY_2) # KEY2
-            if int.from_bytes(bytes(self.dev.read_mem32(FLASH_CTRL_REG, 4)), 'little') == 0: #Check for lock bit
-                self.dev.set_mem32(FLASH_CTRL_REG, 0x1)
-                self.dev.set_mem32(FLASH_ADDR_REG, PROGMEM_ADDR)
+            self.dev.set_mem32(MCU_FLASH_KEY_REG, MCU_FLASH_KEY_1) # KEY1
+            self.dev.set_mem32(MCU_FLASH_KEY_REG, MCU_FLASH_KEY_2) # KEY2
+            if int.from_bytes(bytes(self.dev.read_mem32(MCU_FLASH_CTRL_REG, 4)), 'little') == 0: #Check for lock bit
+                self.dev.set_mem32(MCU_FLASH_CTRL_REG, 0x1)
+                self.dev.set_mem32(MCU_FLASH_ADDR_REG, MCU_PROGMEM_ADDR)
                 with open(file_path, 'rb') as f:
                     data = f.read(0x10000)
                     offset = 0
-                    for offset in range(0, PROGMEM_LEN, 4):
+                    for offset in range(0, MCU_PROGMEM_LEN, 4):
                         if self.verbose:
                             print("=", end='', flush=True)
                         b = int.from_bytes(data[offset:offset+4], 'little')
-                        self.dev.set_mem32(PROGMEM_ADDR + offset, b)
-                        k = int.from_bytes(bytes(self.dev.read_mem32(PROGMEM_ADDR + offset, 4)), 'little')
+                        self.dev.set_mem32(MCU_PROGMEM_ADDR + offset, b)
+                        k = int.from_bytes(bytes(self.dev.read_mem32(MCU_PROGMEM_ADDR + offset, 4)), 'little')
                         if k != b:
-                            print(hex(PROGMEM_ADDR + offset), hex(b))
+                            print(hex(MCU_PROGMEM_ADDR + offset), hex(b))
                             print(hex(k))
-                            print(hex(int.from_bytes(bytes(self.dev.read_mem32(PROGMEM_ADDR + offset, 4)), 'little')))
+                            print(hex(int.from_bytes(bytes(self.dev.read_mem32(MCU_PROGMEM_ADDR + offset, 4)), 'little')))
                             break
                     if self.verbose:
                         print("")
                         
     def erase_prog_mem(self):
         print("Erasing PROG_MEM")
-        self.dev.set_mem32(FLASH_KEY_REG, FLASH_KEY_1) # KEY1
-        self.dev.set_mem32(FLASH_KEY_REG, FLASH_KEY_2) # KEY2
-        if int.from_bytes(bytes(self.dev.read_mem32(FLASH_CTRL_REG, 4)), 'little') == 0: #Check for lock bit
-            self.dev.set_mem32(FLASH_CTRL_REG, 0x4)
-            self.dev.set_mem32(FLASH_CTRL_REG, 0x44)
+        self.dev.set_mem32(MCU_FLASH_KEY_REG, MCU_FLASH_KEY_1) # KEY1
+        self.dev.set_mem32(MCU_FLASH_KEY_REG, MCU_FLASH_KEY_2) # KEY2
+        if int.from_bytes(bytes(self.dev.read_mem32(MCU_FLASH_CTRL_REG, 4)), 'little') == 0: #Check for lock bit
+            self.dev.set_mem32(MCU_FLASH_CTRL_REG, 0x4)
+            self.dev.set_mem32(MCU_FLASH_CTRL_REG, 0x44)
             return True
         return False
     
-    def upload_flash(self, file_path):
-        pass
+    def upload_flash(self):
+        if os.path.exists(self.flash_input_file):
+            print("Writing Flash < " + self.flash_input_file)
+            if self.verbose:
+                print("BUFFER_MEM_ADDR:\t" + hex(DATA_BUFFER_ADDR))
+                print("PAGE_SET_MEM_ADDR:\t" + hex(PAGE_SET_ADDR))
+                print("WRITE_SET_MEM_ADDR:\t" + hex(WRITE_FLAG_ADDR))
+                print("BLOCK_SIZE:\t\t" + str(FLASH_BLOCK_SIZE))
+                print("BLOCKS:\t\t\t" + str(FLASH_BLOCKS))
+                
+            with open(self.flash_input_file, 'rb') as f:
+                
+                buffer = f.read()
+                self.dev.write_mem8(WRITE_FLAG_ADDR, [1])
+                self.dev.write_mem8(CONTINUE_FLAG_ADDR, [1])
+
+                time.sleep(1)
+                for block in range(FLASH_BLOCKS): #FLASH_BLOCKS
+                    bl_data = buffer[block * FLASH_BLOCK_SIZE: (block * FLASH_BLOCK_SIZE) + FLASH_BLOCK_SIZE]
+                    for offset in range(0, len(bl_data), 4): #len(bl_data)
+                        d = [bl_data[offset], bl_data[offset+1], bl_data[offset+2], bl_data[offset+3]]
+                        # b = int.from_bytes(bl_data[offset:offset+4], 'little')
+                        # time.sleep(1)
+                        # self.dev.set_mem32(DATA_BUFFER_ADDR + offset, b)
+                        # print(offset)
+                        #self.dev.write_mem32(DATA_BUFFER_ADDR + offset, [3, 3, 3, 3])
+                    time.sleep(.5)
+                    print(block)
+                    print(bytes(self.dev.read_mem8(DATA_BUFFER_ADDR, 32)))
+                    self.dev.write_mem8(PAGE_SET_ADDR, [block])
+                    time.sleep(.2)
+                    print(bytes(self.dev.read_mem8(DATA_BUFFER_ADDR, 32)))
+                    while(True):
+                        pass
+                    while(int.from_bytes(bytes(self.dev.read_mem8(STATUS_REG_ADDR, 1)), 'big') == 5):
+                        pass
+                    print(block)
+                        
+        else:
+            print(f"Error - Invalid file path: {self.flash_input_file}")
+                
+            
+
     
     def set_level_value(self):
         self.dev.write_mem8(LVL_RESET_FLAG_ADDR, [1]) #Set juice level reset flag
         self.dev.write_mem32(LEVEL_BUFFER_ADDR, [0, 0, 0, 0]) #Optional - Set juice level 0x0 = FULL, 0x2FFFF = empty
-        # dev.write_mem32(LEVEL_BUFFER_ADDR, [1]) #Set to one to write to memory
-        # dev.write_mem32(LEVEL_BUFFER_ADDR, [1])
         time.sleep(0.1)
         self.dev.write_mem8(CONTINUE_FLAG_ADDR, [1])
         time.sleep(0.5)
@@ -247,7 +288,7 @@ class ReFlasher:
             print(bytes(self.dev.read_mem(LEVEL_READ_BUFFER_ADDR, 5)))
 
     def dump_flash(self, file_path=""):
-        print("Dumping Flash> " + file_path)
+        print("Dumping Flash > " + file_path)
         if self.verbose:
             print("BUFFER_MEM_ADDR:\t" + hex(DATA_BUFFER_ADDR))
             print("PAGE_SET_MEM_ADDR:\t" + hex(PAGE_SET_ADDR))
@@ -269,7 +310,8 @@ class ReFlasher:
                 if self.verbose:
                     print("=", end="", flush=True)
                 self.dev.write_mem8(PAGE_SET_ADDR, [page])
-                time.sleep(0.05)
+                while(int.from_bytes(bytes(self.dev.read_mem8(STATUS_REG_ADDR, 1)), 'big') == 5):
+                        pass
                 d = bytes(self.dev.read_mem(DATA_BUFFER_ADDR, FLASH_BLOCK_SIZE))
                 data += d
 
@@ -312,7 +354,7 @@ class FlashConvert:
             with open(bin_file_path, 'rb') as f:
                 for img in mem_map:
                     im = FlashConvert.extract_image(f, img[1], img[2])
-                    im.save('images/' + img[0] + '.jpg')
+                    im.save('images/' + img[0] + '.bmp')
 
                 f.seek(ACTIVATION_TIME_ADDR)
                 vape_activation_time = int.from_bytes(f.read(4), byteorder='big')
@@ -323,9 +365,9 @@ class FlashConvert:
             print(f'Vape Activation Time: {str(vape_activation_time / 100)}s ({str(vape_activation_time)})')
             print(f'In-Use Flag: {hex(vape_in_use_flag)}')
 
-            with open('vape_config.txt', 'w') as cf:
-                cf.write(f'Vape Activation Time: {str(vape_activation_time / 100)}s ({str(vape_activation_time)})\n')
-                cf.write(f'In-Use Flag: {hex(vape_in_use_flag)}')
+            # with open('vape_config.txt', 'w') as cf:
+            #     cf.write(f'Vape Activation Time: {str(vape_activation_time / 100)}s ({str(vape_activation_time)})\n')
+            #     cf.write(f'In-Use Flag: {hex(vape_in_use_flag)}')
 
         else:
             print(f"Error - Invalid file path: {bin_file_path}")
@@ -338,7 +380,7 @@ class FlashConvert:
 
         for img in mem_map:
             im_data = bytearray()
-            im = Image.open(os.path.join(image_directory, img[0] + ".jpg"))
+            im = Image.open(os.path.join(image_directory, img[0] + ".bmp"))
             if im.size == img[1]:
                 data_size = im.size[0] * im.size[1] * 2
                 for y in range(im.size[1]):
@@ -347,9 +389,9 @@ class FlashConvert:
                         r = 248 if px[0] > 248 else px[0]
                         g = 252 if px[1] > 252 else px[1]
                         b = 248 if px[2] > 248 else px[2]
-                        i = (r << 8) + (g << 3) + (b >> 3)
+                        i = (b >> 3) | (g << 3) | (r << 8) 
                         try:
-                            b = int.to_bytes(i, 2, 'little')
+                            b = int.to_bytes(i, 2, 'big')
                             im_data.extend(b)
                         except Exception as ex:
                             print(img[0], x, y)
@@ -360,7 +402,6 @@ class FlashConvert:
                             exit()
                 if data_size == len(im_data):
                     buffer[img[2]:img[2]+data_size] = im_data
-                # print(hex(img[2] + len(im_data)), hex(len(im_data)))
                 
             else:
                 print("Image size mismatch: " + img[0])
@@ -369,42 +410,49 @@ class FlashConvert:
             f.write(buffer)
 
 if __name__ == "__main__":
-    # px = 0xffff
-    # p = ((px & 0xF800) >> 8, (px & 0x07E0) >> 3, (px & 0x001F) << 3)
-    # print(p)
-    # parser = argparse.ArgumentParser(
-    #                 prog='RAZ/KRAZE External Flash Extractor',
-    #                 description='A tool for extracting RAZ/KRAZE vape external memory to binary image.')
+    parser = argparse.ArgumentParser(
+                    prog='RAZ/KRAZE External Flash Extractor',
+                    description='A tool for extracting RAZ/KRAZE vape external memory to binary image.')
     
-    # parser.add_argument('-v', '--verbose', action='store_true', help='Prints verbose output')
-    # parser.add_argument('-i', '--inf', help="Define the input file path for the flash memory binary file")
-    # parser.add_argument('-o', '--out', help="Define the output file path for the flash memory binary file. If not defined, it will not dump the flash memory")
-    # parser.add_argument('-u', '--upload', help="Upload FW from specified BIN file")
-    # parser.add_argument('-d', '--download', help="Download FW to specified BIN file")
-    # parser.add_argument('-r', '--reflasher', help="Define the reflasher.bin FW file path. If not defined, it will assume reflasher.bin is in your current working directory.")
-    # parser.add_argument('-l', '--level', help="Set the level indicator value. Value can be HEX or INT (0x0 = FULL, 0x2FFFF = EMPTY)")
-    # parser.add_argument('-e', '--extract', const="true", action="store", nargs="?", help="Extract the images and battery data from the flash binary file")
-    # parser.add_argument('-c', '--compile', nargs=2, help="Compile images and battery data to a flash binary file")
-    # args = parser.parse_args()
+    parser.add_argument('-v', '--verbose', action='store_true', help='Prints verbose output')
+    parser.add_argument('-i', '--inf', help="Define the input file path for the flash memory binary file")
+    parser.add_argument('-o', '--out', help="Define the output file path for the flash memory binary file. If not defined, it will not dump the flash memory")
+    parser.add_argument('-u', '--upload', help="Upload FW from specified BIN file")
+    parser.add_argument('-d', '--download', help="Download FW to specified BIN file")
+    parser.add_argument('-r', '--reflasher', help="Define the reflasher.bin FW file path. If not defined, it will assume reflasher.bin is in your current working directory.")
+    parser.add_argument('-l', '--level', help="Set the level indicator value. Value can be HEX or INT (0x0 = FULL, 0x2FFFF = EMPTY)")
+    parser.add_argument('-e', '--extract', const="true", action="store", nargs="?", help="Extract the images and battery data from the flash binary file")
+    parser.add_argument('-c', '--compile', nargs=2, help="Compile images and battery data to a flash binary file")
+    args = parser.parse_args()
 
-    # swd_require = args.inf != None or args.out != None or args.upload != None or args.download != None or args.level != None
+    swd_require = args.inf != None or args.out != None or args.upload != None or args.download != None or args.level != None
 
-    # if swd_require:
-    #     rf = ReFlasher()
-    #     rf.connect()
+    if swd_require:
+        rf = ReFlasher()
         
-    #     rf.verbose = args.verbose
+        rf.connect()
+        rf.reset()
+        
+        rf.verbose = args.verbose
 
-    #     if args.inf != None:
-    #         rf.flash_input_file = args.inf
+        if args.inf != None:
+            rf.flash_input_file = args.inf
+            rf.upload_flash()
+            rf.reset()
+            time.delay(0.1)
+        
 
-    #     if args.out != None:
-    #         rf.flash_output_file = args.out
+        if args.out != None:
+            rf.flash_output_file = args.out
+            time.sleep(1)
+            rf.dump_flash(rf.flash_output_file)
 
-    #     if args.upload != None:
-    #         rf.reset_halt()
-    #         rf.upload_fw(args.upload)
-    #         #TODO: Verfify upload
+        if args.upload != None:
+            rf.reset_halt()
+            rf.upload_fw(args.upload)
+            #TODO: Verfify upload
+
+        rf.reset()
 
     #     if args.download != None:
     #         rf.reset_halt()

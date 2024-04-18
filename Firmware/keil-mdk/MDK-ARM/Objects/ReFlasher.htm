@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ReFlasher.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ReFlasher.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Tue Apr 16 20:46:17 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6210000: Last Updated: Wed Apr 17 21:35:18 2024
 <BR><P>
 <H3>Maximum Stack Usage =        160 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -68,7 +68,7 @@ Global Symbols
 <P><STRONG><a name="[28]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g031.o(.text)
 </UL>
-<P><STRONG><a name="[3f]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[40]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[29]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -78,15 +78,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[40]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[41]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[41]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[42]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[42]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[43]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[43]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[44]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[44]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[45]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_n32g031.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_n32g031.o(RESET)
@@ -197,7 +197,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[45]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[46]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[2c]"></a>GPIO_InitPeripheral</STRONG> (Thumb, 648 bytes, Stack size 56 bytes, n32g031_gpio.o(.text.GPIO_InitPeripheral))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = GPIO_InitPeripheral
@@ -220,9 +220,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -234,9 +235,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -279,9 +281,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -292,9 +295,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -305,9 +309,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -347,10 +352,11 @@ Global Symbols
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 
-<P><STRONG><a name="[26]"></a>main</STRONG> (Thumb, 420 bytes, Stack size 48 bytes, main.o(.text.main))
+<P><STRONG><a name="[26]"></a>main</STRONG> (Thumb, 560 bytes, Stack size 48 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = main &rArr; sFLASH_Init &rArr; GPIO_InitPeripheral
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
+<BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
+<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadBuffer
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteBuffer
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 <LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_ReadID
@@ -363,11 +369,25 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
+<P><STRONG><a name="[3c]"></a>sFLASH_EraseBulk</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, spi_flash.o(.text.sFLASH_EraseBulk))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = sFLASH_EraseBulk &rArr; sFLASH_WaitForWriteEnd &rArr; SPI_I2S_GetStatus
+</UL>
+<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetStatus
+<LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
+<LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_TransmitData
+<LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+</UL>
+<BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[39]"></a>sFLASH_EraseSector</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, spi_flash.o(.text.sFLASH_EraseSector))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = sFLASH_EraseSector &rArr; sFLASH_WaitForWriteEnd &rArr; SPI_I2S_GetStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetStatus
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_TransmitData
@@ -414,7 +434,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3d]"></a>sFLASH_WaitForWriteEnd</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, spi_flash.o(.text.sFLASH_WaitForWriteEnd))
+<P><STRONG><a name="[3e]"></a>sFLASH_WaitForWriteEnd</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, spi_flash.o(.text.sFLASH_WaitForWriteEnd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = sFLASH_WaitForWriteEnd &rArr; SPI_I2S_GetStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetStatus
@@ -423,19 +443,20 @@ Global Symbols
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 </UL>
 
 <P><STRONG><a name="[3a]"></a>sFLASH_WriteBuffer</STRONG> (Thumb, 156 bytes, Stack size 24 bytes, spi_flash.o(.text.sFLASH_WriteBuffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = sFLASH_WriteBuffer &rArr; sFLASH_WritePage &rArr; sFLASH_WaitForWriteEnd &rArr; SPI_I2S_GetStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[3c]"></a>sFLASH_WriteEnable</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, spi_flash.o(.text.sFLASH_WriteEnable))
+<P><STRONG><a name="[3d]"></a>sFLASH_WriteEnable</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, spi_flash.o(.text.sFLASH_WriteEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = sFLASH_WriteEnable &rArr; SPI_I2S_GetStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetStatus
@@ -444,15 +465,16 @@ Global Symbols
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WritePage
+<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseBulk
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_EraseSector
 </UL>
 
-<P><STRONG><a name="[3e]"></a>sFLASH_WritePage</STRONG> (Thumb, 252 bytes, Stack size 24 bytes, spi_flash.o(.text.sFLASH_WritePage))
+<P><STRONG><a name="[3f]"></a>sFLASH_WritePage</STRONG> (Thumb, 252 bytes, Stack size 24 bytes, spi_flash.o(.text.sFLASH_WritePage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = sFLASH_WritePage &rArr; sFLASH_WaitForWriteEnd &rArr; SPI_I2S_GetStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
-<LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
+<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WaitForWriteEnd
+<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteEnable
 <LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetStatus
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_TransmitData
@@ -462,11 +484,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sFLASH_WriteBuffer
 </UL>
 
-<P><STRONG><a name="[46]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[47]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[47]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[48]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[48]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[49]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 <P>
 <H3>
 Local Symbols
