@@ -544,7 +544,7 @@ void sFLASH_WaitForWriteEnd(void)
     sFLASH_CS_LOW();
 
     /*!< Send "Read Status Register" instruction */
-    sFLASH_SendByte(sFLASH_CMD_RDSR);
+    sFLASH_SendByte(sFLASH_CMD_RDSR_1);
 
     /*!< Loop as long as the memory is busy with a write cycle */
     do

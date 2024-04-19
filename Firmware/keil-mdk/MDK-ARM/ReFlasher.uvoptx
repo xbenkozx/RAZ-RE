@@ -188,15 +188,10 @@
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tmp_buffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
           <ItemText>status</ItemText>
         </Ww>
         <Ww>
-          <count>9</count>
+          <count>8</count>
           <WinNumber>1</WinNumber>
           <ItemText>FlashID</ItemText>
         </Ww>
@@ -204,7 +199,7 @@
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
-          <SubType>0</SubType>
+          <SubType>2</SubType>
           <ItemText>0x20000004</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
@@ -215,7 +210,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>

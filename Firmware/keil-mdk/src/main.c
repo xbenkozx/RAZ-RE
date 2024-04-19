@@ -9,7 +9,7 @@
 #define LED_GPIO GPIOA
 
 #define BUFFER_SIZE 4096
-int page[1];
+volatile int page[1];
 volatile int lvl_reset_flag[1];
 volatile int continue_flag[1];
 volatile int write_flag[1];
@@ -18,7 +18,25 @@ uint8_t lvl_buffer[5];
 uint8_t lvl_buffer_read[5];
 uint8_t buffer[BUFFER_SIZE];
 __IO uint32_t FlashID = 0;
-uint32_t pointer;
+uint32_t status_register;
+
+uint8_t sFLASH_ReadRegister(uint8_t reg)
+{
+    uint8_t flashstatus = 0;
+
+    /*!< Select the FLASH: Chip Select low */
+    sFLASH_CS_LOW();
+
+    /*!< Send "Read Status Register" instruction */
+    sFLASH_SendByte(sFLASH_CMD_RDSR_1);
+    
+    flashstatus = sFLASH_SendByte(reg);
+
+    /*!< Deselect the FLASH: Chip Select high */
+    sFLASH_CS_HIGH();
+		
+		return flashstatus;
+}
 
 int main(void)
 {
@@ -44,12 +62,8 @@ int main(void)
 		status[0] = 1;
 		while(continue_flag[0] == 0)
 			;
+		continue_flag[0] = 0;
 		
-		//if(write_flag[0] == 1){
-		for(int i=0; i<BUFFER_SIZE; i++){
-			//buffer[i] = 0xde;
-		//}
-		}
 		status[0] = 2;
 		continue_flag[0] = 0;
 		
@@ -59,32 +73,50 @@ int main(void)
 			sFLASH_WriteBuffer(lvl_buffer, 0xf8000, 5);
 			status[0] = 3;
 		}
+		//for(int i=0; i<4096; i++){
+			//buffer[i] = 0xe1;
+		//}
 		
+		//Delay(10);
 		sFLASH_ReadBuffer(lvl_buffer_read, 0xf8000, 5);
 		
 		volatile int tmp_page = -1;
 		
 		if(write_flag[0] == 1){
+			write_flag[0] = 0;
 			sFLASH_EraseBulk();
-			Delay(1000);
-			while(1){
-				if(tmp_page != page[0]){
-					status[0] = 4;
-					GPIO_On(LED_GPIO, LED_PIN);
-					tmp_page = page[0];
-					uint32_t addr = page[0] * BUFFER_SIZE;
-					for(int i=0; i<1; i++){
-						int offset = (i * 256);
-						uint32_t sector_addr = addr + offset;
+			Delay(10);
+			status[0] = 5;
+			for(uint32_t i=0; i<256; i++){
+				while(status[0] == 5) ;
+				GPIO_On(LED_GPIO, LED_PIN);
+				uint32_t addr = i * BUFFER_SIZE;
+				sFLASH_WriteBuffer(buffer, addr, BUFFER_SIZE);
+				status[0] = 5;
+				GPIO_Off(LED_GPIO, LED_PIN);
+			}
+			//sFLASH_EraseBulk();
+			//Delay(10);
+			//while(1){
+				//if(tmp_page != page[0]){
+					//status[0] = 4;
+					//GPIO_On(LED_GPIO, LED_PIN);
+					//tmp_page = page[0];
+					//uint32_t addr = page[0] * BUFFER_SIZE;
+					//sFLASH_WriteBuffer(buffer, addr, BUFFER_SIZE);
+					//for(int i=0; i<16; i++){
+						//int offset = (i * 256);
+						//uint32_t sector_addr = addr + offset;
 						//pointer = sector_addr;
 						//Delay(1000);
-						sFLASH_WriteBuffer(buffer, sector_addr, 256);
-					}
-					sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
-					status[0] = 5;
-					GPIO_Off(LED_GPIO, LED_PIN);
-				}
-			}
+						
+					//}
+					//sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
+					//status[0] = 5;
+					//GPIO_Off(LED_GPIO, LED_PIN);
+				//}
+				
+			//}
 		}else{
 			while(1){
 				if(tmp_page != page[0]){
@@ -92,7 +124,7 @@ int main(void)
 					GPIO_On(LED_GPIO, LED_PIN);
 					tmp_page = page[0];
 					uint32_t addr = page[0] * BUFFER_SIZE;
-					sFLASH_ReadBuffer(buffer, addr, 256);
+					sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
 					GPIO_Off(LED_GPIO, LED_PIN);
 					status[0] = 7;
 				}
