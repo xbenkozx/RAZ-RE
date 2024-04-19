@@ -490,14 +490,8 @@ if __name__ == "__main__":
 
         if args.inf != None:
             rf.flash_input_file = args.inf
-<<<<<<< HEAD
             if args.force:
                 rf.upload_flash()
-=======
-            rf.upload_flash()
-            rf.reset()
-            time.sleep(0.1)
->>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
         
 
         if args.out != None:
