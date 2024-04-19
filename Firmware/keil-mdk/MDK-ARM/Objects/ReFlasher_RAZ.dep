@@ -1,110 +1,111 @@
 Dependencies for Project 'ReFlasher', Target 'RAZ': (DO NOT MODIFY !)
 CompilerVersion: 6210000::V6.21::ARMCLANG
-F (..\firmware\CMSIS\device\startup\startup_n32g031.s)(0x662080A6)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=armasm  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__MICROLIB SETA 1" -Wa,armasm,--pd,"__EVAL SETA 1"-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-Wa,armasm,--pd,"__UVISION_VERSION SETA 539" -Wa,armasm,--pd,"N32G031 SETA 1" -Wa,armasm,--pd,"USE_STDPERIPH_DRIVER SETA 1"-o ./objects/startup_n32g031.o)
-F (..\firmware\CMSIS\device\system_n32g031.c)(0x661F184F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/system_n32g031.o -MD)
+F (..\firmware\CMSIS\device\startup\startup_n32g031.s)(0x65F358B7)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=armasm  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__MICROLIB SETA 1"-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-Wa,armasm,--pd,"__UVISION_VERSION SETA 539" -Wa,armasm,--pd,"N32G031 SETA 1" -Wa,armasm,--pd,"USE_STDPERIPH_DRIVER SETA 1"-o ./objects/startup_n32g031.o)
+F (..\firmware\CMSIS\device\system_n32g031.c)(0x6501FE64)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/system_n32g031.o -MD)
 I (..\firmware\CMSIS\device\n32g031.h2.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
-I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
-F (..\firmware\n32g031_std_periph_driver\src\n32g031_gpio.c)(0x661F184F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_gpio.o -MD)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661F184F)
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)
+F (..\firmware\n32g031_std_periph_driver\src\n32g031_gpio.c)(0x65F35886)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_gpio.o -MD)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
 I (..\firmware\CMSIS\device\n32g031.hv.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
-I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
-F (..\firmware\n32g031_std_periph_driver\src\n32g031_spi.c)(0x661F184F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_spi.o -MD)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x661F184F)
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)
+F (..\firmware\n32g031_std_periph_driver\src\n32g031_spi.c)(0x65F4D216)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_spi.o -MD)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
 I (..\firmware\CMSIS\device\n32g031.hv.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
-I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
-F (..\firmware\n32g031_std_periph_driver\src\n32g031_rcc.c)(0x661F184F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_rcc.o -MD)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)
+F (..\firmware\n32g031_std_periph_driver\src\n32g031_rcc.c)(0x6501FE64)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_rcc.o -MD)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
 I (..\firmware\CMSIS\device\n32g031.hv.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
+<<<<<<< HEAD
 I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
@@ -130,45 +131,73 @@ I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
 F (..\src\main.c)(0x6621C0BF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/main.o -MD)
+=======
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)
+F (..\src\main.c)(0x6621B523)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/main.o -MD)
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 I (..\firmware\CMSIS\device\n32g031.h3.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
-I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
 I (..\firmware\n32g031_std_periph_driver\inc\misc.h1.\inc\spi_flash.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x656A8302)
-F (..\src\n32g031_it.c)(0x6620899D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_it.o -MD)
+F (..\src\n32g031_it.c)(0x642F56E8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/n32g031_it.o -MD)
 I (..\firmware\CMSIS\device\n32g031.hi.\firmware\CMSIS\core\core_cm0.h)(0x00000000)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
+<<<<<<< HEAD
 I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
@@ -195,35 +224,63 @@ I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
 I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
 F (..\src\spi_flash.c)(0x6621BC89)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/kozlo/AppData/Local/Arm/Packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/spi_flash.o -MD)
+=======
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)
+F (..\src\spi_flash.c)(0x662181B4)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../inc -I ../src -I ../firmware/CMSIS/core -I ../firmware/CMSIS/device -I ../firmware/CMSIS/device/startup -I ../firmware/n32g031_std_periph_driver/inc -I ../firmware/n32g031_std_periph_driver/src-IC:/Users/Ben/AppData/Local/arm/packs/Nationstech/N32G031_DFP/1.0.4/firmware/CMSIS/device-D__UVISION_VERSION="539" -DN32G031 -DUSE_STDPERIPH_DRIVER -DN32G031 -DUSE_STDPERIPH_DRIVER -DUSE_FULL_ASSERT-o ./objects/spi_flash.o -MD)
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 I (..\inc\n32g031_it.h..\firmware\CMSIS\device\n32g031.h)(0x00000000)
-I (..\firmware\CMSIS\core\core_cm0.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cm0.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x656A8302)
-I (..\firmware\CMSIS\core\core_cmInstr.h)(0x661F184F)
-I (..\firmware\CMSIS\core\core_cmFunc.h)(0x661F184F)
-I (..\firmware\CMSIS\device\system_n32g031.h)(0x661F184F)
+I (..\firmware\CMSIS\core\core_cmInstr.h)(0x65F2336B)
+I (..\firmware\CMSIS\core\core_cmFunc.h)(0x642F56E8)
+I (..\firmware\CMSIS\device\system_n32g031.h)(0x642F56E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x656A8302)
-I (..\firmware\CMSIS\device\n32g031_conf.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x661F184F)
-I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x661F184F)
+I (..\firmware\CMSIS\device\n32g031_conf.h)(0x65F28484)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_adc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_beeper.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_comp.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_crc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dbg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_dma.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_exti.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_flash.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_gpio.h)(0x661EA71B)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_hdiv.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_i2c.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_iwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_opamp.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_pwr.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rcc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_rtc.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_spi.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_sqrt.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_tim.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_usart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lpuart.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_lptim.h)(0x64D6DABE)
+I (..\firmware\n32g031_std_periph_driver\inc\n32g031_wwdg.h)(0x642F56E8)
+I (..\firmware\n32g031_std_periph_driver\inc\misc.h)(0x642F56E8)

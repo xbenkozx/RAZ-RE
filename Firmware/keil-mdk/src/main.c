@@ -9,6 +9,10 @@
 #define LED_GPIO GPIOA
 
 #define BUFFER_SIZE 4096
+<<<<<<< HEAD
+=======
+volatile int page[1];
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 volatile int lvl_reset_flag[1];
 volatile int continue_flag[1];
 volatile int write_flag[1];
@@ -60,8 +64,13 @@ int main(void)
 		// Wait for continue flag
 		while(continue_flag[0] == 0)
 			;
+		continue_flag[0] = 0;
 		
+<<<<<<< HEAD
 		// Reset continue flag
+=======
+		status[0] = 2;
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 		continue_flag[0] = 0;
 		status[0] = 2;
 		
@@ -73,7 +82,11 @@ int main(void)
 			status[0] = 3;
 			
 		}
+		//for(int i=0; i<4096; i++){
+			//buffer[i] = 0xe1;
+		//}
 		
+<<<<<<< HEAD
 		//Reset lvl_buffer to 0x0
 		lvl_buffer[0] = 0x0;
 		lvl_buffer[1] = 0x0;
@@ -83,11 +96,16 @@ int main(void)
 		
 		// Read the juice level
 		sFLASH_ReadBuffer(lvl_buffer, 0xf8000, 5);
+=======
+		//Delay(10);
+		sFLASH_ReadBuffer(lvl_buffer_read, 0xf8000, 5);
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 		
 		volatile int tmp_page = -1;
 		
 		// If the write flag is set, initialize write
 		if(write_flag[0] == 1){
+<<<<<<< HEAD
 			// Reset write flag
 			write_flag[0] = 0; 
 			// Erase all flash memory, getting read for writing data
@@ -120,6 +138,53 @@ int main(void)
 				// Set status to 5 so that it will wait for next data to be read from buffer
 				status[0] = 5;
 				GPIO_Off(LED_GPIO, LED_PIN);
+=======
+			write_flag[0] = 0;
+			sFLASH_EraseBulk();
+			Delay(10);
+			status[0] = 5;
+			for(uint32_t i=0; i<256; i++){
+				while(status[0] == 5) ;
+				GPIO_On(LED_GPIO, LED_PIN);
+				uint32_t addr = i * BUFFER_SIZE;
+				sFLASH_WriteBuffer(buffer, addr, BUFFER_SIZE);
+				status[0] = 5;
+				GPIO_Off(LED_GPIO, LED_PIN);
+			}
+			//sFLASH_EraseBulk();
+			//Delay(10);
+			//while(1){
+				//if(tmp_page != page[0]){
+					//status[0] = 4;
+					//GPIO_On(LED_GPIO, LED_PIN);
+					//tmp_page = page[0];
+					//uint32_t addr = page[0] * BUFFER_SIZE;
+					//sFLASH_WriteBuffer(buffer, addr, BUFFER_SIZE);
+					//for(int i=0; i<16; i++){
+						//int offset = (i * 256);
+						//uint32_t sector_addr = addr + offset;
+						//pointer = sector_addr;
+						//Delay(1000);
+						
+					//}
+					//sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
+					//status[0] = 5;
+					//GPIO_Off(LED_GPIO, LED_PIN);
+				//}
+				
+			//}
+		}else{
+			while(1){
+				if(tmp_page != page[0]){
+					status[0] = 6;
+					GPIO_On(LED_GPIO, LED_PIN);
+					tmp_page = page[0];
+					uint32_t addr = page[0] * BUFFER_SIZE;
+					sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
+					GPIO_Off(LED_GPIO, LED_PIN);
+					status[0] = 7;
+				}
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
 			}
 		}
 	}else{

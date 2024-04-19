@@ -178,10 +178,27 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
+<<<<<<< HEAD
           <ItemText>status</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
+=======
+          <ItemText>continue_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>buffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>status</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
           <WinNumber>1</WinNumber>
           <ItemText>FlashID</ItemText>
         </Ww>
@@ -190,7 +207,11 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>2</SubType>
+<<<<<<< HEAD
           <ItemText>0x20001008</ItemText>
+=======
+          <ItemText>0x20000004</ItemText>
+>>>>>>> 8444998287286b5181f8ce6164742ed808c94c9e
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -200,7 +221,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
