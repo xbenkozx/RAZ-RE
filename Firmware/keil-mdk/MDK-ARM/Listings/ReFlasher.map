@@ -265,6 +265,10 @@ Section Cross References
     n32g031_rcc.o(.text.RCC_EnableRAMCParityErrorReset) refers to main.o(.text.assert_failed) for assert_failed
     n32g031_rcc.o(.text.RCC_EnableRAMCParityErrorReset) refers to n32g031_rcc.o(.rodata.str1.1) for [Anonymous Symbol]
     n32g031_rcc.o(.ARM.exidx.text.RCC_EnableRAMCParityErrorReset) refers to n32g031_rcc.o(.text.RCC_EnableRAMCParityErrorReset) for [Anonymous Symbol]
+    main.o(.text.sFLASH_ReadRegister) refers to n32g031_gpio.o(.text.GPIO_ResetBits) for GPIO_ResetBits
+    main.o(.text.sFLASH_ReadRegister) refers to spi_flash.o(.text.sFLASH_SendByte) for sFLASH_SendByte
+    main.o(.text.sFLASH_ReadRegister) refers to n32g031_gpio.o(.text.GPIO_SetBits) for GPIO_SetBits
+    main.o(.ARM.exidx.text.sFLASH_ReadRegister) refers to main.o(.text.sFLASH_ReadRegister) for [Anonymous Symbol]
     main.o(.text.main) refers to n32g031_rcc.o(.text.RCC_EnableAPB2PeriphClk) for RCC_EnableAPB2PeriphClk
     main.o(.text.main) refers to n32g031_gpio.o(.text.GPIO_InitStruct) for GPIO_InitStruct
     main.o(.text.main) refers to n32g031_gpio.o(.text.GPIO_InitPeripheral) for GPIO_InitPeripheral
@@ -276,14 +280,12 @@ Section Cross References
     main.o(.text.main) refers to spi_flash.o(.text.sFLASH_ReadBuffer) for sFLASH_ReadBuffer
     main.o(.text.main) refers to spi_flash.o(.text.sFLASH_EraseBulk) for sFLASH_EraseBulk
     main.o(.text.main) refers to n32g031_gpio.o(.text.GPIO_ResetBits) for GPIO_ResetBits
-    main.o(.text.main) refers to main.o(.bss.write_flag) for write_flag
-    main.o(.text.main) refers to main.o(.bss.page) for page
     main.o(.text.main) refers to main.o(.bss.FlashID) for FlashID
     main.o(.text.main) refers to main.o(.bss.status) for status
     main.o(.text.main) refers to main.o(.bss.continue_flag) for continue_flag
     main.o(.text.main) refers to main.o(.bss.lvl_reset_flag) for lvl_reset_flag
     main.o(.text.main) refers to main.o(.bss.lvl_buffer) for lvl_buffer
-    main.o(.text.main) refers to main.o(.bss.lvl_buffer_read) for lvl_buffer_read
+    main.o(.text.main) refers to main.o(.bss.write_flag) for write_flag
     main.o(.text.main) refers to main.o(.bss.buffer) for buffer
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     main.o(.text.GPIO_Init) refers to n32g031_rcc.o(.text.RCC_EnableAPB2PeriphClk) for RCC_EnableAPB2PeriphClk
@@ -594,6 +596,8 @@ Removing Unused input sections from the image.
     Removing n32g031_rcc.o(.ARM.exidx.text.RCC_EnableRAMCParityErrorReset), (8 bytes).
     Removing n32g031_rcc.o(.rodata.cst16), (16 bytes).
     Removing main.o(.text), (0 bytes).
+    Removing main.o(.text.sFLASH_ReadRegister), (48 bytes).
+    Removing main.o(.ARM.exidx.text.sFLASH_ReadRegister), (8 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
     Removing main.o(.text.GPIO_Init), (100 bytes).
     Removing main.o(.ARM.exidx.text.GPIO_Init), (8 bytes).
@@ -604,7 +608,8 @@ Removing Unused input sections from the image.
     Removing main.o(.text.GPIO_On), (8 bytes).
     Removing main.o(.ARM.exidx.text.GPIO_On), (8 bytes).
     Removing main.o(.ARM.exidx.text.assert_failed), (8 bytes).
-    Removing main.o(.bss.pointer), (4 bytes).
+    Removing main.o(.bss.lvl_buffer_read), (5 bytes).
+    Removing main.o(.bss.status_register), (4 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing n32g031_it.o(.text), (0 bytes).
     Removing n32g031_it.o(.ARM.exidx.text.NMI_Handler), (8 bytes).
@@ -639,7 +644,7 @@ Removing Unused input sections from the image.
     Removing spi_flash.o(.text.sFLASH_SendHalfWord), (52 bytes).
     Removing spi_flash.o(.ARM.exidx.text.sFLASH_SendHalfWord), (8 bytes).
 
-226 unused section(s) (total 10974 bytes) removed from the image.
+229 unused section(s) (total 11035 bytes) removed from the image.
 
 ==============================================================================
 
@@ -773,40 +778,39 @@ Image Symbol Table
     __arm_cp.0_7                             0x08000a20   Number         4  system_n32g031.o(.text.SystemInit)
     [Anonymous Symbol]                       0x08000a24   Section        0  main.o(.text.assert_failed)
     [Anonymous Symbol]                       0x08000a28   Section        0  main.o(.text.main)
-    __arm_cp.0_0                             0x08000c58   Number         4  main.o(.text.main)
-    __arm_cp.0_1                             0x08000c5c   Number         4  main.o(.text.main)
-    __arm_cp.0_3                             0x08000c60   Number         4  main.o(.text.main)
-    __arm_cp.0_4                             0x08000c64   Number         4  main.o(.text.main)
-    __arm_cp.0_5                             0x08000c68   Number         4  main.o(.text.main)
-    __arm_cp.0_6                             0x08000c6c   Number         4  main.o(.text.main)
-    __arm_cp.0_7                             0x08000c70   Number         4  main.o(.text.main)
-    __arm_cp.0_8                             0x08000c74   Number         4  main.o(.text.main)
-    __arm_cp.0_9                             0x08000c78   Number         4  main.o(.text.main)
-    __arm_cp.0_10                            0x08000c7c   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x08000c80   Section        0  spi_flash.o(.text.sFLASH_EraseBulk)
-    [Anonymous Symbol]                       0x08000ccc   Section        0  spi_flash.o(.text.sFLASH_EraseSector)
-    [Anonymous Symbol]                       0x08000d94   Section        0  spi_flash.o(.text.sFLASH_Init)
-    __arm_cp.3_0                             0x08000e30   Number         4  spi_flash.o(.text.sFLASH_Init)
-    [Anonymous Symbol]                       0x08000e34   Section        0  spi_flash.o(.text.sFLASH_ReadBuffer)
-    [Anonymous Symbol]                       0x08000f28   Section        0  spi_flash.o(.text.sFLASH_ReadID)
-    __arm_cp.12_0                            0x08000ff4   Number         4  spi_flash.o(.text.sFLASH_ReadID)
-    [Anonymous Symbol]                       0x08000ff8   Section        0  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
-    __arm_cp.7_0                             0x08001064   Number         4  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
-    __arm_cp.7_1                             0x08001068   Number         4  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
-    [Anonymous Symbol]                       0x0800106c   Section        0  spi_flash.o(.text.sFLASH_WriteBuffer)
-    [Anonymous Symbol]                       0x08001108   Section        0  spi_flash.o(.text.sFLASH_WriteEnable)
-    __arm_cp.5_0                             0x0800114c   Number         4  spi_flash.o(.text.sFLASH_WriteEnable)
-    __arm_cp.5_1                             0x08001150   Number         4  spi_flash.o(.text.sFLASH_WriteEnable)
-    [Anonymous Symbol]                       0x08001154   Section        0  spi_flash.o(.text.sFLASH_WritePage)
-    __arm_cp.9_0                             0x08001250   Number         4  spi_flash.o(.text.sFLASH_WritePage)
-    __arm_cp.9_1                             0x08001254   Number         4  spi_flash.o(.text.sFLASH_WritePage)
-    i.__scatterload_copy                     0x08001258   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08001266   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08001268   Section       14  handlers.o(i.__scatterload_zeroinit)
-    [Anonymous Symbol]                       0x08001276   Section        0  n32g031_gpio.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080013b8   Section        0  n32g031_spi.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x080015b4   Section        0  n32g031_rcc.o(.rodata.str1.1)
-    STACK                                    0x20001028   Section     1024  startup_n32g031.o(STACK)
+    __arm_cp.1_1                             0x08000c18   Number         4  main.o(.text.main)
+    __arm_cp.1_2                             0x08000c1c   Number         4  main.o(.text.main)
+    __arm_cp.1_3                             0x08000c20   Number         4  main.o(.text.main)
+    __arm_cp.1_4                             0x08000c24   Number         4  main.o(.text.main)
+    __arm_cp.1_5                             0x08000c28   Number         4  main.o(.text.main)
+    __arm_cp.1_6                             0x08000c2c   Number         4  main.o(.text.main)
+    __arm_cp.1_7                             0x08000c30   Number         4  main.o(.text.main)
+    __arm_cp.1_8                             0x08000c34   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x08000c38   Section        0  spi_flash.o(.text.sFLASH_EraseBulk)
+    [Anonymous Symbol]                       0x08000c84   Section        0  spi_flash.o(.text.sFLASH_EraseSector)
+    [Anonymous Symbol]                       0x08000d4c   Section        0  spi_flash.o(.text.sFLASH_Init)
+    __arm_cp.3_0                             0x08000de8   Number         4  spi_flash.o(.text.sFLASH_Init)
+    [Anonymous Symbol]                       0x08000dec   Section        0  spi_flash.o(.text.sFLASH_ReadBuffer)
+    __arm_cp.11_0                            0x08000ee0   Number         4  spi_flash.o(.text.sFLASH_ReadBuffer)
+    [Anonymous Symbol]                       0x08000ee4   Section        0  spi_flash.o(.text.sFLASH_ReadID)
+    __arm_cp.12_0                            0x08000fb0   Number         4  spi_flash.o(.text.sFLASH_ReadID)
+    [Anonymous Symbol]                       0x08000fb4   Section        0  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
+    __arm_cp.7_0                             0x08001020   Number         4  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
+    __arm_cp.7_1                             0x08001024   Number         4  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
+    [Anonymous Symbol]                       0x08001028   Section        0  spi_flash.o(.text.sFLASH_WriteBuffer)
+    [Anonymous Symbol]                       0x080010c4   Section        0  spi_flash.o(.text.sFLASH_WriteEnable)
+    __arm_cp.5_0                             0x08001108   Number         4  spi_flash.o(.text.sFLASH_WriteEnable)
+    __arm_cp.5_1                             0x0800110c   Number         4  spi_flash.o(.text.sFLASH_WriteEnable)
+    [Anonymous Symbol]                       0x08001110   Section        0  spi_flash.o(.text.sFLASH_WritePage)
+    __arm_cp.9_0                             0x0800120c   Number         4  spi_flash.o(.text.sFLASH_WritePage)
+    __arm_cp.9_1                             0x08001210   Number         4  spi_flash.o(.text.sFLASH_WritePage)
+    i.__scatterload_copy                     0x08001214   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08001222   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08001224   Section       14  handlers.o(i.__scatterload_zeroinit)
+    [Anonymous Symbol]                       0x08001232   Section        0  n32g031_gpio.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08001374   Section        0  n32g031_spi.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x08001570   Section        0  n32g031_rcc.o(.rodata.str1.1)
+    STACK                                    0x20001020   Section     1024  startup_n32g031.o(STACK)
 
     Global Symbols
 
@@ -882,31 +886,29 @@ Image Symbol Table
     SysTick_Handler                          0x08000947   Thumb Code     2  n32g031_it.o(.text.SysTick_Handler)
     SystemInit                               0x08000949   Thumb Code   188  system_n32g031.o(.text.SystemInit)
     assert_failed                            0x08000a25   Thumb Code     2  main.o(.text.assert_failed)
-    main                                     0x08000a29   Thumb Code   560  main.o(.text.main)
-    sFLASH_EraseBulk                         0x08000c81   Thumb Code    76  spi_flash.o(.text.sFLASH_EraseBulk)
-    sFLASH_EraseSector                       0x08000ccd   Thumb Code   200  spi_flash.o(.text.sFLASH_EraseSector)
-    sFLASH_Init                              0x08000d95   Thumb Code   156  spi_flash.o(.text.sFLASH_Init)
-    sFLASH_ReadBuffer                        0x08000e35   Thumb Code   244  spi_flash.o(.text.sFLASH_ReadBuffer)
-    sFLASH_ReadID                            0x08000f29   Thumb Code   204  spi_flash.o(.text.sFLASH_ReadID)
-    sFLASH_WaitForWriteEnd                   0x08000ff9   Thumb Code   108  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
-    sFLASH_WriteBuffer                       0x0800106d   Thumb Code   156  spi_flash.o(.text.sFLASH_WriteBuffer)
-    sFLASH_WriteEnable                       0x08001109   Thumb Code    68  spi_flash.o(.text.sFLASH_WriteEnable)
-    sFLASH_WritePage                         0x08001155   Thumb Code   252  spi_flash.o(.text.sFLASH_WritePage)
-    __scatterload_copy                       0x08001259   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08001267   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08001269   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x0800162c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800163c   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08000a29   Thumb Code   496  main.o(.text.main)
+    sFLASH_EraseBulk                         0x08000c39   Thumb Code    76  spi_flash.o(.text.sFLASH_EraseBulk)
+    sFLASH_EraseSector                       0x08000c85   Thumb Code   200  spi_flash.o(.text.sFLASH_EraseSector)
+    sFLASH_Init                              0x08000d4d   Thumb Code   156  spi_flash.o(.text.sFLASH_Init)
+    sFLASH_ReadBuffer                        0x08000ded   Thumb Code   244  spi_flash.o(.text.sFLASH_ReadBuffer)
+    sFLASH_ReadID                            0x08000ee5   Thumb Code   204  spi_flash.o(.text.sFLASH_ReadID)
+    sFLASH_WaitForWriteEnd                   0x08000fb5   Thumb Code   108  spi_flash.o(.text.sFLASH_WaitForWriteEnd)
+    sFLASH_WriteBuffer                       0x08001029   Thumb Code   156  spi_flash.o(.text.sFLASH_WriteBuffer)
+    sFLASH_WriteEnable                       0x080010c5   Thumb Code    68  spi_flash.o(.text.sFLASH_WriteEnable)
+    sFLASH_WritePage                         0x08001111   Thumb Code   252  spi_flash.o(.text.sFLASH_WritePage)
+    __scatterload_copy                       0x08001215   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08001223   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08001225   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x080015e8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080015f8   Number         0  anon$$obj.o(Region$$Table)
     FlashID                                  0x20000000   Data           4  main.o(.bss.FlashID)
     buffer                                   0x20000004   Data        4096  main.o(.bss.buffer)
     continue_flag                            0x20001004   Data           4  main.o(.bss.continue_flag)
     lvl_buffer                               0x20001008   Data           5  main.o(.bss.lvl_buffer)
-    lvl_buffer_read                          0x2000100d   Data           5  main.o(.bss.lvl_buffer_read)
-    lvl_reset_flag                           0x20001014   Data           4  main.o(.bss.lvl_reset_flag)
-    page                                     0x20001018   Data           4  main.o(.bss.page)
-    status                                   0x2000101c   Data           4  main.o(.bss.status)
-    write_flag                               0x20001020   Data           4  main.o(.bss.write_flag)
-    __initial_sp                             0x20001428   Data           0  startup_n32g031.o(STACK)
+    lvl_reset_flag                           0x20001010   Data           4  main.o(.bss.lvl_reset_flag)
+    status                                   0x20001014   Data           4  main.o(.bss.status)
+    write_flag                               0x20001018   Data           4  main.o(.bss.write_flag)
+    __initial_sp                             0x20001420   Data           0  startup_n32g031.o(STACK)
 
 
 
@@ -916,31 +918,31 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000163c, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000015f8, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000163c, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000015f8, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x000000c0   Data   RO            3    RESET               startup_n32g031.o
-    0x080000c0   0x080000c0   0x00000000   Code   RO          322  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x080000c0   0x080000c0   0x00000004   Code   RO          331    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x080000c4   0x080000c4   0x00000004   Code   RO          334    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x080000c8   0x080000c8   0x00000000   Code   RO          336    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x080000c8   0x080000c8   0x00000000   Code   RO          338    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x080000c8   0x080000c8   0x00000008   Code   RO          339    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x080000d0   0x080000d0   0x00000000   Code   RO          341    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x080000d0   0x080000d0   0x00000000   Code   RO          343    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x080000d0   0x080000d0   0x00000004   Code   RO          332    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x080000c0   0x080000c0   0x00000000   Code   RO          323  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x080000c0   0x080000c0   0x00000004   Code   RO          332    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x080000c4   0x080000c4   0x00000004   Code   RO          335    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x080000c8   0x080000c8   0x00000000   Code   RO          337    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x080000c8   0x080000c8   0x00000000   Code   RO          339    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x080000c8   0x080000c8   0x00000008   Code   RO          340    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x080000d0   0x080000d0   0x00000000   Code   RO          342    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x080000d0   0x080000d0   0x00000000   Code   RO          344    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x080000d0   0x080000d0   0x00000004   Code   RO          333    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
     0x080000d4   0x080000d4   0x0000001c   Code   RO            4    .text               startup_n32g031.o
-    0x080000f0   0x080000f0   0x00000030   Code   RO          355    .text               mc_p.l(init.o)
+    0x080000f0   0x080000f0   0x00000030   Code   RO          356    .text               mc_p.l(init.o)
     0x08000120   0x08000120   0x00000344   Code   RO           31    .text.GPIO_InitPeripheral  n32g031_gpio.o
     0x08000464   0x08000464   0x0000001c   Code   RO           33    .text.GPIO_InitStruct  n32g031_gpio.o
     0x08000480   0x08000480   0x0000008c   Code   RO           45    .text.GPIO_ResetBits  n32g031_gpio.o
     0x0800050c   0x0800050c   0x000000ac   Code   RO           43    .text.GPIO_SetBits  n32g031_gpio.o
-    0x080005b8   0x080005b8   0x00000002   Code   RO          266    .text.HardFault_Handler  n32g031_it.o
-    0x080005ba   0x080005ba   0x00000002   Code   RO          264    .text.NMI_Handler   n32g031_it.o
-    0x080005bc   0x080005bc   0x00000002   Code   RO          270    .text.PendSV_Handler  n32g031_it.o
+    0x080005b8   0x080005b8   0x00000002   Code   RO          267    .text.HardFault_Handler  n32g031_it.o
+    0x080005ba   0x080005ba   0x00000002   Code   RO          265    .text.NMI_Handler   n32g031_it.o
+    0x080005bc   0x080005bc   0x00000002   Code   RO          271    .text.PendSV_Handler  n32g031_it.o
     0x080005be   0x080005be   0x00000002   PAD
     0x080005c0   0x080005c0   0x00000054   Code   RO          199    .text.RCC_EnableAPB2PeriphClk  n32g031_rcc.o
     0x08000614   0x08000614   0x00000048   Code   RO           82    .text.SPI_Enable    n32g031_spi.o
@@ -948,47 +950,45 @@ Memory Map of the image
     0x0800071c   0x0800071c   0x00000024   Code   RO           92    .text.SPI_I2S_ReceiveData  n32g031_spi.o
     0x08000740   0x08000740   0x00000028   Code   RO           90    .text.SPI_I2S_TransmitData  n32g031_spi.o
     0x08000768   0x08000768   0x000001dc   Code   RO           74    .text.SPI_Init      n32g031_spi.o
-    0x08000944   0x08000944   0x00000002   Code   RO          268    .text.SVC_Handler   n32g031_it.o
-    0x08000946   0x08000946   0x00000002   Code   RO          272    .text.SysTick_Handler  n32g031_it.o
+    0x08000944   0x08000944   0x00000002   Code   RO          269    .text.SVC_Handler   n32g031_it.o
+    0x08000946   0x08000946   0x00000002   Code   RO          273    .text.SysTick_Handler  n32g031_it.o
     0x08000948   0x08000948   0x000000dc   Code   RO           11    .text.SystemInit    system_n32g031.o
-    0x08000a24   0x08000a24   0x00000002   Code   RO          243    .text.assert_failed  main.o
+    0x08000a24   0x08000a24   0x00000002   Code   RO          245    .text.assert_failed  main.o
     0x08000a26   0x08000a26   0x00000002   PAD
-    0x08000a28   0x08000a28   0x00000258   Code   RO          233    .text.main          main.o
-    0x08000c80   0x08000c80   0x0000004c   Code   RO          299    .text.sFLASH_EraseBulk  spi_flash.o
-    0x08000ccc   0x08000ccc   0x000000c8   Code   RO          291    .text.sFLASH_EraseSector  spi_flash.o
-    0x08000d94   0x08000d94   0x000000a0   Code   RO          289    .text.sFLASH_Init   spi_flash.o
-    0x08000e34   0x08000e34   0x000000f4   Code   RO          305    .text.sFLASH_ReadBuffer  spi_flash.o
-    0x08000f28   0x08000f28   0x000000d0   Code   RO          307    .text.sFLASH_ReadID  spi_flash.o
-    0x08000ff8   0x08000ff8   0x00000074   Code   RO          297    .text.sFLASH_WaitForWriteEnd  spi_flash.o
-    0x0800106c   0x0800106c   0x0000009c   Code   RO          303    .text.sFLASH_WriteBuffer  spi_flash.o
-    0x08001108   0x08001108   0x0000004c   Code   RO          293    .text.sFLASH_WriteEnable  spi_flash.o
-    0x08001154   0x08001154   0x00000104   Code   RO          301    .text.sFLASH_WritePage  spi_flash.o
-    0x08001258   0x08001258   0x0000000e   Code   RO          359    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x08001266   0x08001266   0x00000002   Code   RO          360    i.__scatterload_null  mc_p.l(handlers.o)
-    0x08001268   0x08001268   0x0000000e   Code   RO          361    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x08001276   0x08001276   0x00000142   Data   RO           63    .rodata.str1.1      n32g031_gpio.o
-    0x080013b8   0x080013b8   0x000001fc   Data   RO          118    .rodata.str1.1      n32g031_spi.o
-    0x080015b4   0x080015b4   0x00000075   Data   RO          223    .rodata.str1.1      n32g031_rcc.o
-    0x08001629   0x08001629   0x00000003   PAD
-    0x0800162c   0x0800162c   0x00000010   Data   RO          358    Region$$Table       anon$$obj.o
+    0x08000a28   0x08000a28   0x00000210   Code   RO          235    .text.main          main.o
+    0x08000c38   0x08000c38   0x0000004c   Code   RO          300    .text.sFLASH_EraseBulk  spi_flash.o
+    0x08000c84   0x08000c84   0x000000c8   Code   RO          292    .text.sFLASH_EraseSector  spi_flash.o
+    0x08000d4c   0x08000d4c   0x000000a0   Code   RO          290    .text.sFLASH_Init   spi_flash.o
+    0x08000dec   0x08000dec   0x000000f8   Code   RO          306    .text.sFLASH_ReadBuffer  spi_flash.o
+    0x08000ee4   0x08000ee4   0x000000d0   Code   RO          308    .text.sFLASH_ReadID  spi_flash.o
+    0x08000fb4   0x08000fb4   0x00000074   Code   RO          298    .text.sFLASH_WaitForWriteEnd  spi_flash.o
+    0x08001028   0x08001028   0x0000009c   Code   RO          304    .text.sFLASH_WriteBuffer  spi_flash.o
+    0x080010c4   0x080010c4   0x0000004c   Code   RO          294    .text.sFLASH_WriteEnable  spi_flash.o
+    0x08001110   0x08001110   0x00000104   Code   RO          302    .text.sFLASH_WritePage  spi_flash.o
+    0x08001214   0x08001214   0x0000000e   Code   RO          360    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08001222   0x08001222   0x00000002   Code   RO          361    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08001224   0x08001224   0x0000000e   Code   RO          362    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08001232   0x08001232   0x00000142   Data   RO           63    .rodata.str1.1      n32g031_gpio.o
+    0x08001374   0x08001374   0x000001fc   Data   RO          118    .rodata.str1.1      n32g031_spi.o
+    0x08001570   0x08001570   0x00000075   Data   RO          223    .rodata.str1.1      n32g031_rcc.o
+    0x080015e5   0x080015e5   0x00000003   PAD
+    0x080015e8   0x080015e8   0x00000010   Data   RO          359    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800163c, Size: 0x00001428, Max: 0x00002000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080015f8, Size: 0x00001420, Max: 0x00002000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000        -       0x00000004   Zero   RW          245    .bss.FlashID        main.o
+    0x20000000        -       0x00000004   Zero   RW          247    .bss.FlashID        main.o
     0x20000004        -       0x00001000   Zero   RW          253    .bss.buffer         main.o
     0x20001004        -       0x00000004   Zero   RW          249    .bss.continue_flag  main.o
     0x20001008        -       0x00000005   Zero   RW          251    .bss.lvl_buffer     main.o
-    0x2000100d        -       0x00000005   Zero   RW          252    .bss.lvl_buffer_read  main.o
-    0x20001012   0x0800163c   0x00000002   PAD
-    0x20001014        -       0x00000004   Zero   RW          250    .bss.lvl_reset_flag  main.o
-    0x20001018        -       0x00000004   Zero   RW          246    .bss.page           main.o
-    0x2000101c        -       0x00000004   Zero   RW          248    .bss.status         main.o
-    0x20001020        -       0x00000004   Zero   RW          247    .bss.write_flag     main.o
-    0x20001024   0x0800163c   0x00000004   PAD
-    0x20001028        -       0x00000400   Zero   RW            1    STACK               startup_n32g031.o
+    0x2000100d   0x080015f8   0x00000003   PAD
+    0x20001010        -       0x00000004   Zero   RW          250    .bss.lvl_reset_flag  main.o
+    0x20001014        -       0x00000004   Zero   RW          248    .bss.status         main.o
+    0x20001018        -       0x00000004   Zero   RW          252    .bss.write_flag     main.o
+    0x2000101c   0x080015f8   0x00000004   PAD
+    0x20001020        -       0x00000400   Zero   RW            1    STACK               startup_n32g031.o
 
 
 ==============================================================================
@@ -998,19 +998,19 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       602         40          0          0       4130       4776   main.o
+       530         32          0          0       4121       4875   main.o
       1176        236        322          0          0      10155   n32g031_gpio.o
         10          0          0          0          0        770   n32g031_it.o
         84         20        117          0          0      15796   n32g031_rcc.o
        816        304        508          0          0       9626   n32g031_spi.o
-      1496         32          0          0          0       8522   spi_flash.o
+      1500         36          0          0          0       8522   spi_flash.o
         28          8        192          0       1024        692   startup_n32g031.o
        220         32          0          0          0       2532   system_n32g031.o
 
     ----------------------------------------------------------------------
-      4436        672       1158          0       5160      52869   Object Totals
+      4368        668       1158          0       5152      52968   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-         4          0          3          0          6          0   (incl. Padding)
+         4          0          3          0          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1047,15 +1047,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4534        690       1158          0       5160      52969   Grand Totals
-      4534        690       1158          0       5160      52969   ELF Image Totals
-      4534        690       1158          0          0          0   ROM Totals
+      4466        686       1158          0       5152      53068   Grand Totals
+      4466        686       1158          0       5152      53068   ELF Image Totals
+      4466        686       1158          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5692 (   5.56kB)
-    Total RW  Size (RW Data + ZI Data)              5160 (   5.04kB)
-    Total ROM Size (Code + RO Data + RW Data)       5692 (   5.56kB)
+    Total RO  Size (Code + RO Data)                 5624 (   5.49kB)
+    Total RW  Size (RW Data + ZI Data)              5152 (   5.03kB)
+    Total ROM Size (Code + RO Data + RW Data)       5624 (   5.49kB)
 
 ==============================================================================
 

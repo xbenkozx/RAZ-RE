@@ -9,7 +9,7 @@ A PAGE byte can be set to read through pages in the flash memory. Once the PAGE 
 ## Usage
 <span style="color:red;"><b>NOTE: This program is only to be used with XD0007_MB_V0.6B and XD0007_MB_V0.6G1 board revisions. Using it on incompatible boards my result in damage to the device and/or bodily injury.</b></span>
 
-The ReFlasher is still under development and not all features are fully working. It is built in python and can be executed in terminal with the following arguments:
+It is built in python and can be executed in terminal with the following arguments:
 
 | Arg                               | Description                                                   |
 | --------------------------------- | ------------------------------------------------------------- |
@@ -19,8 +19,8 @@ The ReFlasher is still under development and not all features are fully working.
 | -u --upload <<i>file_path</i>>    | Upload FW from specified BIN file                             |
 | -d --download <<i>file_path</i>>  | Download FW to specified BIN file                             |
 | -r --reflasher <<i>file_path</i>> | (<i>optional</i>) Define the reflasher.bin FW file path.<br/>If not defined, it will assume reflasher.bin is in your current working directory. |
-| -l --level <<i>value</i>>         | Set the level indicator value. Value can be HEX or INT (<i>0x0 = FULL, 0x2FFFF = EMPTY</i>) |
-| -e --extract <<i>file_path</i>>   | Extract the images and battery data from the flash binary file|
+| -l --level <<i>value</i>>         | Set the level indicator value. Value can be HEX, INT or percentage (<i>0x0 = FULL, 0x40000 = EMPTY</i>) |
+| -e --extract <<i>file_path</i>> <<i>image_dir</i>> | Extract the images and battery data from the flash binary file|
 | -c --compile <<i>file_path</i>> <<i>image_dir</i>> | Compile images and battery data to a flash binary file        |
 
 

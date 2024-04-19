@@ -70,14 +70,16 @@ extern "C" {
 /**
  * @brief  SPI Flash supported commands
  */
-#define sFLASH_CMD_WRITE 0x02 /*!< Write to Memory instruction */
-#define sFLASH_CMD_WRSR  0x01 /*!< Write Status Register instruction */
-#define sFLASH_CMD_WREN  0x06 /*!< Write enable instruction */
-#define sFLASH_CMD_READ  0x03 /*!< Read from Memory instruction */
-#define sFLASH_CMD_RDSR  0x05 /*!< Read Status Register instruction  */
-#define sFLASH_CMD_RDID  0x9F /*!< Read identification */
-#define sFLASH_CMD_SE    0x20 /*!< Sector Erase instruction */
-#define sFLASH_CMD_BE    0xC7 /*!< Bulk Erase instruction */
+#define sFLASH_CMD_WRITE 		0x02 /*!< Write to Memory instruction */
+#define sFLASH_CMD_WRSR  		0x01 /*!< Write Status Register instruction */
+#define sFLASH_CMD_WREN  		0x06 /*!< Write enable instruction */
+#define sFLASH_CMD_READ  		0x03 /*!< Read from Memory instruction */
+#define sFLASH_CMD_RDSR_1  	0x05 /*!< Read Status Register instruction  */
+#define sFLASH_CMD_RDSR_2  	0x35 /*!< Read Status Register instruction  */
+#define sFLASH_CMD_RDSR_3  	0x15 /*!< Read Status Register instruction  */
+#define sFLASH_CMD_RDID  		0x9F /*!< Read identification */
+#define sFLASH_CMD_SE    		0x20 /*!< Sector Erase instruction */
+#define sFLASH_CMD_BE    		0xC7 /*!< Bulk Erase instruction */
 
 #define sFLASH_WIP_FLAG 0x01 /*!< Write In Progress (WIP) flag */
 

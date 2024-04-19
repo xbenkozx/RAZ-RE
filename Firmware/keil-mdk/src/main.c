@@ -9,7 +9,6 @@
 #define LED_GPIO GPIOA
 
 #define BUFFER_SIZE 4096
-int page[1];
 volatile int lvl_reset_flag[1];
 volatile int continue_flag[1];
 volatile int write_flag[1];
@@ -18,12 +17,29 @@ uint8_t lvl_buffer[5];
 uint8_t lvl_buffer_read[5];
 uint8_t buffer[BUFFER_SIZE];
 __IO uint32_t FlashID = 0;
-uint32_t pointer;
+uint32_t status_register;
+
+uint8_t sFLASH_ReadRegister(uint8_t reg)
+{
+    uint8_t flashstatus = 0;
+
+    /*!< Select the FLASH: Chip Select low */
+    sFLASH_CS_LOW();
+
+    /*!< Send "Read Status Register" instruction */
+    sFLASH_SendByte(sFLASH_CMD_RDSR_1);
+    
+    flashstatus = sFLASH_SendByte(reg);
+
+    /*!< Deselect the FLASH: Chip Select high */
+    sFLASH_CS_HIGH();
+		
+		return flashstatus;
+}
 
 int main(void)
 {
-	page[0] = -1;
-	write_flag[0] = 0;
+	
 	/* LED Setup */
 	GPIO_Init(LED_GPIO, LED_PIN, GPIO_MODE_OUTPUT_PP);
 	Delay(100);
@@ -31,74 +47,83 @@ int main(void)
 	
 	sFLASH_Init();
 	
-	//continue_flag[0] = 1;
-	//write_flag[0] = 1;
-	
 	while(1){
 		Delay(100);
 		FlashID = sFLASH_ReadID();
 		if(FlashID != 0) break;
 	}
 	
+	// Check Flash ID
 	if(FlashID == sFLASH_GD25Q80_ID){
 		status[0] = 1;
+		
+		// Wait for continue flag
 		while(continue_flag[0] == 0)
 			;
 		
-		//if(write_flag[0] == 1){
-		for(int i=0; i<BUFFER_SIZE; i++){
-			//buffer[i] = 0xde;
-		//}
-		}
-		status[0] = 2;
+		// Reset continue flag
 		continue_flag[0] = 0;
+		status[0] = 2;
 		
+		// If level reset flag is set, execute the level reset
 		if(lvl_reset_flag[0] == 1){
 			lvl_buffer[4] = 0xBB;
 			sFLASH_EraseSector(0xf8000);
 			sFLASH_WriteBuffer(lvl_buffer, 0xf8000, 5);
 			status[0] = 3;
+			
 		}
 		
-		sFLASH_ReadBuffer(lvl_buffer_read, 0xf8000, 5);
+		//Reset lvl_buffer to 0x0
+		lvl_buffer[0] = 0x0;
+		lvl_buffer[1] = 0x0;
+		lvl_buffer[2] = 0x0;
+		lvl_buffer[3] = 0x0;
+		lvl_buffer[4] = 0x0;
+		
+		// Read the juice level
+		sFLASH_ReadBuffer(lvl_buffer, 0xf8000, 5);
 		
 		volatile int tmp_page = -1;
 		
+		// If the write flag is set, initialize write
 		if(write_flag[0] == 1){
-			sFLASH_EraseBulk();
-			Delay(1000);
-			while(1){
-				if(tmp_page != page[0]){
-					status[0] = 4;
-					GPIO_On(LED_GPIO, LED_PIN);
-					tmp_page = page[0];
-					uint32_t addr = page[0] * BUFFER_SIZE;
-					for(int i=0; i<1; i++){
-						int offset = (i * 256);
-						uint32_t sector_addr = addr + offset;
-						//pointer = sector_addr;
-						//Delay(1000);
-						sFLASH_WriteBuffer(buffer, sector_addr, 256);
-					}
-					sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE);
-					status[0] = 5;
-					GPIO_Off(LED_GPIO, LED_PIN);
-				}
+			// Reset write flag
+			write_flag[0] = 0; 
+			// Erase all flash memory, getting read for writing data
+			sFLASH_EraseBulk(); 
+			
+			// Set status to 5. This will be used when wait for data to be written to buffer
+			status[0] = 5;
+			for(uint32_t i=0; i<256; i++){ // For each block
+				//Wait for status to be set to 4 (or anything else)
+				while(status[0] == 5) ; 
+				GPIO_On(LED_GPIO, LED_PIN);
+				//Calculate the flash memory address to be written
+				uint32_t addr = i * BUFFER_SIZE;
+				// Write the block of data to flash
+				sFLASH_WriteBuffer(buffer, addr, BUFFER_SIZE); 
+				// Set status to 5 so that it will wait for next data to be written to buffer
+				status[0] = 5; 
+				GPIO_Off(LED_GPIO, LED_PIN);
 			}
 		}else{
-			while(1){
-				if(tmp_page != page[0]){
-					status[0] = 6;
-					GPIO_On(LED_GPIO, LED_PIN);
-					tmp_page = page[0];
-					uint32_t addr = page[0] * BUFFER_SIZE;
-					sFLASH_ReadBuffer(buffer, addr, 256);
-					GPIO_Off(LED_GPIO, LED_PIN);
-					status[0] = 7;
-				}
+			status[0] = 5;
+			for(uint32_t i=0; i<256; i++){
+				//Wait for status to be set to 4 (or anything else)
+				while(status[0] == 5) ; 
+				GPIO_On(LED_GPIO, LED_PIN);
+				//Calculate the flash memory address to be read
+				uint32_t addr = i * BUFFER_SIZE;
+				// Read the block of data from flash
+				sFLASH_ReadBuffer(buffer, addr, BUFFER_SIZE); 
+				// Set status to 5 so that it will wait for next data to be read from buffer
+				status[0] = 5;
+				GPIO_Off(LED_GPIO, LED_PIN);
 			}
 		}
 	}else{
+		// If there is an error reading the Flash ID, pulse the light 3 times for 1 second delay
 		GPIO_On(LED_GPIO, LED_PIN);
 		Delay(1000);
 		GPIO_Off(LED_GPIO, LED_PIN);
