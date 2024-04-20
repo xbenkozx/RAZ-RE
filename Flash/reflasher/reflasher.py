@@ -288,6 +288,13 @@ class ReFlasher:
 
         self.dev.write_mem8(CONTINUE_FLAG_ADDR, [1])
 
+        #Set to 4 to write data to memory from flash
+        self.dev.write_mem8(STATUS_REG_ADDR, [4])
+
+        #Wait for read to complete
+        while(int.from_bytes(bytes(self.dev.read_mem8(STATUS_REG_ADDR, 1)), 'big') != 5):
+                pass
+
         # Read data from memory
         data = b''
         if file_path != "":
@@ -301,7 +308,7 @@ class ReFlasher:
                 if self.verbose:
                     print("=", end="", flush=True)
 
-                #Se to 4 to write data to memory from flash
+                #Set to 4 to write data to memory from flash
                 self.dev.write_mem8(STATUS_REG_ADDR, [4])
 
                 #Wait for read to complete
@@ -475,7 +482,8 @@ if __name__ == "__main__":
             rf.upload_fw(rf.reflasher_fw_file)
             rf.reset()
             time.sleep(1)
-            rf.set_level_value()
+            if args.level != None:
+                rf.set_level_value()
             rf.reset()
             if rf.flash_output_file != "":
                 rf.dump_flash(rf.flash_output_file)
