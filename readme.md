@@ -172,3 +172,5 @@ All images are stored on the external Flash as raw RGB565 16-bit bitmaps (i.e. e
 
 ## Keil MDK / C Library Examples
 Nation Tech has a library for Keil MDK IDE. This library is included in the N32G031xx_V2.2.0.zip file. This file also includes examples for different functions of the core.
+
+<i>Note: When installing the Nationstech.N32G031_DFP.1.0.3.pack, you may have to rename the pack file to a zip and manually install the pdsc file.</i>
